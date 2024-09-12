@@ -8,6 +8,7 @@ import { Toaster } from 'sonner';
 import GetBalance from "@/components/GetBalance";
 import GetAirDrop from "@/components/RequestAirdrop";
 import SignMessage from "@/components/SignMessage";
+import { SendTokens } from "@/components/SendTokens";
 
 export default function Home() {
   const { connected, publicKey } = useWallet();
@@ -32,6 +33,7 @@ export default function Home() {
             <GetBalance />
             <GetAirDrop />
             <SignMessage />
+            <SendTokens />
           </div>
         )}
       </div>
