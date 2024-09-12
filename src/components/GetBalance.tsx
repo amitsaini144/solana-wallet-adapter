@@ -1,8 +1,6 @@
 import { useConnection, useWallet } from "@solana/wallet-adapter-react";
-import { LAMPORTS_PER_SOL } from "@solana/web3.js";
 import { useCallback, useEffect, useState } from "react";
 import { toast } from 'sonner';
-
 
 export default function GetBalance() {
     const { publicKey } = useWallet();
@@ -25,14 +23,13 @@ export default function GetBalance() {
 
     useEffect(() => {
         getBalance();
-    }, []);
+    }, [getBalance]);
 
     return (
         <div className="flex items-center gap-4">
             <h1><span className="font-bold">Your Balance:</span> {balance}</h1>
-            <button onClick={getBalance} type="button" className="text-white bg-[#512da8] border border-gray-300 focus:outline-none hover:bg-black/90 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2">
-                Get Balance </button>
-            
+            <button onClick={getBalance} type="button" className="text-white bg-[#512da8] border border-gray-300 focus:outline-none hover:bg-black/90 font-medium rounded-lg text-sm px-5 py-2.5 mb-2">
+            Get Balance </button>
         </div>
     );
 }
