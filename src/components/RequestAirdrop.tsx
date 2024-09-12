@@ -9,10 +9,7 @@ export default function GetAirDrop() {
     const { connection } = useConnection();
 
     const getAirdropOnClick = useCallback(async () => {
-        if (!publicKey) {
-            toast.error("Wallet not connected");
-            return;
-        };
+        if (!publicKey) throw new Error('Wallet not connected!');
 
         if (!amount) {
             toast.error("Amount not specified");

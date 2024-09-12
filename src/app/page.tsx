@@ -2,11 +2,12 @@
 
 import { WalletDisconnectButton, WalletMultiButton } from "@solana/wallet-adapter-react-ui";
 import { useWallet } from "@solana/wallet-adapter-react";
+import { useEffect, useState } from "react";
 import { Spinner } from "@nextui-org/react";
 import { Toaster } from 'sonner';
 import GetBalance from "@/components/GetBalance";
-import GetAirDrop from "@/components/GetAirDrop";
-import { useEffect, useState } from "react";
+import GetAirDrop from "@/components/RequestAirdrop";
+import SignMessage from "@/components/SignMessage";
 
 export default function Home() {
   const { connected, publicKey } = useWallet();
@@ -30,6 +31,7 @@ export default function Home() {
             <h1><span className="font-bold">Your Public key:</span> {publicKey?.toString()}</h1>
             <GetBalance />
             <GetAirDrop />
+            <SignMessage />
           </div>
         )}
       </div>
