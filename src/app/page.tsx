@@ -37,7 +37,7 @@ export default function Home() {
       loading: 'Loading...',
       success: (data) => data,
     });
-  }, [publicKey, connection]);
+  }, [publicKey, connection, amount]);
 
   useEffect(() => {
     setIsClient(true);
