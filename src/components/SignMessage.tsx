@@ -37,8 +37,9 @@ export default function SignMessage() {
                 />
                 <button
                     onClick={onClick}
-                    className='text-white bg-[#512da8] border border-gray-300 focus:outline-none hover:bg-black/90 font-medium rounded-lg text-sm px-5 py-2.5 mb-2'
-                > Sign Message </button>
+                    disabled={!message}
+                    className={`text-white bg-[#512da8] border border-gray-300 focus:outline-none hover:bg-black/90 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 ${!message ? 'opacity-60' : ''}`}
+                >  Sign Message </button>
             </div>
 
             {signature && (

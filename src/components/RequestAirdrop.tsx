@@ -10,11 +10,7 @@ export default function GetAirDrop() {
 
     const getAirdropOnClick = useCallback(async () => {
         if (!publicKey) throw new Error('Wallet not connected!');
-
-        if (!amount) {
-            toast.error("Amount not specified");
-            return;
-        }
+        if (!amount) throw new Error('Amount not specified!');
 
         const airdropPromise = async () => {
             try {
@@ -29,7 +25,6 @@ export default function GetAirDrop() {
             success: (data) => data,
         });
     }, [publicKey, connection, amount]);
-
 
     return (
         <div>
@@ -46,8 +41,9 @@ export default function GetAirDrop() {
             />
             <button
                 onClick={getAirdropOnClick}
+                disabled={!amount}
                 type="button"
-                className="text-white bg-[#512da8] border border-gray-300 focus:outline-none hover:bg-black/90 font-medium rounded-lg text-sm px-5 py-2.5 mb-2"
+                className={`text-white bg-[#512da8] border border-gray-300 focus:outline-none hover:bg-black/90 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 ${!amount ? 'opacity-60' : ''}`}
             >
                 Get Airdrop
             </button>
