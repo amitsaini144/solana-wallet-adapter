@@ -1,30 +1,26 @@
-import { useWallet } from "@solana/wallet-adapter-react";
+import { useConnection, useWallet } from "@solana/wallet-adapter-react";
 import { WalletMultiButton, WalletDisconnectButton } from "@solana/wallet-adapter-react-ui";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { WalletIcon, CheckIcon, Copy, CoinsIcon, SignatureIcon, EyeIcon, EyeOffIcon } from "lucide-react";
+import { WalletIcon, CheckIcon, Copy } from "lucide-react";
 import {
     Card,
     CardContent,
     CardHeader,
     CardTitle,
-} from "@/components/ui/card"
+} from "@/components/ui/card";
+import RequestAirdrop from "@/components/RequestAirdrop";
+import GetBalance from "@/components/GetBalance";
+import SignMessage from "@/components/SignMessage";
 
 export default function WalletCard() {
     const { connected, publicKey } = useWallet();
-    const [publicKeyCopied, setPublicKeyCopied] = useState(false)
-    const [showBalance, setShowBalance] = useState(false)
-    const [signedMessage, setSignedMessage] = useState('')
+    const [publicKeyCopied, setPublicKeyCopied] = useState(false);
 
     const handleCopyPublicKey = () => {
         navigator.clipboard.writeText(publicKey?.toString() ?? '');
         setPublicKeyCopied(true)
         setTimeout(() => setPublicKeyCopied(false), 2000)
-    }
-
-    const handleSignMessage = () => {
-        setSignedMessage('Signed Message: Hello, Solana! Timestamp: ' + new Date().toISOString())
     }
 
     return (
@@ -60,38 +56,15 @@ export default function WalletCard() {
                         </Button>
                     </div>
                 )}
-                <div className="flex items-center justify-between mb-4">
-                    <span className="text-lg font-semibold text-purple-700">Balance:</span>
-                    <div className="flex items-center">
-                        {showBalance ? (
-                            <span className="mr-2 text-purple-700">0 SOL</span>
-                        ) : (
-                            <span className="mr-2 text-purple-700">••••••</span>
-                        )}
-                        <Button variant="ghost" size="sm" onClick={() => setShowBalance(!showBalance)}
-                            className="text-purple-600 hover:text-purple-700 hover:bg-purple-200">
-                            {showBalance ? <EyeOffIcon className="h-4 w-4" /> : <EyeIcon className="h-4 w-4" />}
-                        </Button>
-                    </div>
-                </div>
+                <GetBalance publicKey={publicKey} connected={connected} />
                 <div className="space-y-4">
                     <div>
                         <label htmlFor="airdrop-amount" className="block text-sm font-medium mb-1 text-purple-700">Airdrop Amount</label>
-                        <div className="flex space-x-2">
-                            <Input type="number" min={0} id="airdrop-amount" placeholder="SOL amount" className="bg-white/50 border-purple-300 appearance-none [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none" />
-                            <Button className="bg-purple-700 hover:bg-purple-800 text-white">
-                                <CoinsIcon className="mr-2 h-4 w-4" /> Airdrop
-                            </Button>
-                        </div>
+                        <RequestAirdrop />
                     </div>
                     <div>
                         <label htmlFor="sign-message" className="block text-sm font-medium mb-1 text-purple-700">Sign Message</label>
-                        <div className="flex space-x-2">
-                            <Input id="sign-message" placeholder="Enter message" className="bg-white/50 border-purple-300" />
-                            <Button variant="secondary" className="bg-purple-700 hover:bg-purple-800 text-white" onClick={handleSignMessage}>
-                                <SignatureIcon className="mr-2 h-4 w-4" /> Sign
-                            </Button>
-                        </div>
+                        <SignMessage />
                     </div>
                 </div>
             </CardContent>

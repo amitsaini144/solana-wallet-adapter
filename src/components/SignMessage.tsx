@@ -3,13 +3,16 @@ import { useWallet } from '@solana/wallet-adapter-react';
 import bs58 from 'bs58';
 import { useState } from 'react';
 import { toast } from 'sonner';
+import { Input } from '@/components/ui/input';
+import { Button } from '@/components/ui/button';
+import { SignatureIcon } from "lucide-react";
 
 export default function SignMessage() {
     const { publicKey, signMessage } = useWallet();
     const [message, setMessage] = useState('');
     const [signature, setSignature] = useState<string | null>(null);
 
-    async function onClick() {
+    async function handleSignMessage() {
         if (!publicKey) throw new Error('Wallet not connected!');
         if (!signMessage) throw new Error('Wallet does not support message signing!');
 
@@ -26,27 +29,20 @@ export default function SignMessage() {
     };
 
     return (
-        <div className='flex flex-col items-center gap-4'>
-            <div>
-                <input
-                    type="text"
-                    id="message"
-                    placeholder="Message"
-                    onChange={(e) => setMessage(e.target.value)}
-                    className="border border-gray-300 focus:outline-none font-medium rounded-lg text-sm pl-5 pr-2 py-2.5 me-2 mb-2"
-                />
-                <button
-                    onClick={onClick}
-                    disabled={!message}
-                    className={`text-white bg-[#512da8] border border-gray-300 focus:outline-none hover:bg-black/90 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 ${!message ? 'opacity-60' : ''}`}
-                >  Sign Message </button>
-            </div>
-
-            {signature && (
-                <div className=''>
-                    <p><span className='font-bold'>Message Signature: </span> {signature}</p>
-                </div>
-            )}
+        <div className="flex space-x-2">
+            <Input
+                type="text"
+                id="message"
+                placeholder="Enter message"
+                onChange={(e) => setMessage(e.target.value)}
+                className="bg-white/50 border-purple-300"
+            />
+            <Button
+                onClick={handleSignMessage}
+                disabled={!message}
+                className="bg-purple-700 hover:bg-purple-800 text-white">
+                <SignatureIcon className="mr-2 h-4 w-4" /> Sign
+            </Button>
         </div>
     );
 };

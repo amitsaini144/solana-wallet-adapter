@@ -2,8 +2,11 @@ import { useConnection, useWallet } from "@solana/wallet-adapter-react";
 import { LAMPORTS_PER_SOL } from "@solana/web3.js";
 import { useCallback, useState } from "react";
 import { toast } from "sonner";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import { CoinsIcon } from "lucide-react";
 
-export default function GetAirDrop() {
+export default function RequestAirdrop() {
     const [amount, setAmount] = useState<number | null>(null);
     const { publicKey } = useWallet();
     const { connection } = useConnection();
@@ -27,26 +30,24 @@ export default function GetAirDrop() {
     }, [publicKey, connection, amount]);
 
     return (
-        <div>
-            <input
-                onChange={(e) => {
-                    const value = Number(e.target.value);
-                    if (value > 0) setAmount(value);
-                    else setAmount(null);
-                }}
+        <div className="flex space-x-2">
+            <Input
                 type="number"
                 min={0}
-                placeholder="Amount"
-                className="border border-gray-300 focus:outline-none font-medium rounded-lg text-sm pl-5 pr-2 py-2.5 me-2 mb-2"
-            />
-            <button
+                id="airdrop-amount"
+                placeholder="SOL amount"
+                className="bg-white/50 border-purple-300 appearance-none [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+                onChange={(e) => {
+                    const value = Number(e.target.value);
+                    if (value > 0 && value <= 3) setAmount(value);
+                    else setAmount(null);
+                }} />
+            <Button
                 onClick={getAirdropOnClick}
                 disabled={!amount}
-                type="button"
-                className={`text-white bg-[#512da8] border border-gray-300 focus:outline-none hover:bg-black/90 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 ${!amount ? 'opacity-60' : ''}`}
-            >
-                Get Airdrop
-            </button>
+                className="bg-purple-700 hover:bg-purple-800 text-white">
+                <CoinsIcon className="mr-2 h-4 w-4" /> Airdrop
+            </Button>
         </div>
     )
 
