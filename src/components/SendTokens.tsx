@@ -3,7 +3,7 @@ import { LAMPORTS_PER_SOL, PublicKey, SystemProgram, Transaction } from "@solana
 import { useState } from "react";
 import { toast } from "sonner";
 
-export function SendTokens() {
+export default function SendTokens() {
     const wallet = useWallet();
     const { connection } = useConnection();
     const [amount, setAmount] = useState<number | null>(null);

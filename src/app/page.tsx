@@ -8,7 +8,11 @@ import { Toaster } from 'sonner';
 import GetBalance from "@/components/GetBalance";
 import GetAirDrop from "@/components/RequestAirdrop";
 import SignMessage from "@/components/SignMessage";
-import { SendTokens } from "@/components/SendTokens";
+import SendTokens from "@/components/SendTokens";
+import WalletCard from "@/components/WalletCard";
+import SendTokensCard from "@/components/SendTokensCard";
+import SignMessageCard from "@/components/SignMessageCard";
+import { CoinsIcon } from "lucide-react";
 
 export default function Home() {
   const { connected, publicKey } = useWallet();
@@ -23,19 +27,15 @@ export default function Home() {
   }
 
   return (
-    <main className="flex items-center justify-center min-h-screen">
-      <div className="flex flex-col items-center gap-2 rounded">
-        <WalletMultiButton />
-        {connected && <WalletDisconnectButton />}
-        {publicKey && (
-          <div className="flex flex-col items-center gap-4">
-            <h1><span className="font-bold">Your Public key:</span> {publicKey?.toString()}</h1>
-            <GetBalance />
-            <GetAirDrop />
-            <SignMessage />
-            <SendTokens />
-          </div>
-        )}
+    <main className="min-h-screen bg-gradient-to-br from-purple-100 to-blue-100 p-4 sm:p-6 lg:p-8">
+      <div className="max-w-4xl mx-auto">
+        <h1 className="text-4xl font-bold text-center mb-8 text-purple-600">Solana Wallet Adapter</h1>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <WalletCard />
+          <SendTokensCard />
+          <SignMessageCard />
+        </div>
       </div>
       <Toaster richColors />
     </main>
