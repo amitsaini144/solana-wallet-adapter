@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useMemo } from "react";
+import { RecoilRoot } from 'recoil';
 import {
   ConnectionProvider,
   WalletProvider,
@@ -22,7 +23,9 @@ export default function AppWalletProvider({
     <ConnectionProvider endpoint={endpoint} >
       <WalletProvider wallets={[]} autoConnect>
         <WalletModalProvider>
-          {children}
+          <RecoilRoot>
+            {children}
+          </RecoilRoot>
         </WalletModalProvider>
       </WalletProvider>
     </ConnectionProvider>

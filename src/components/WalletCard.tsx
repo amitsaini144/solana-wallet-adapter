@@ -1,6 +1,6 @@
-import { useConnection, useWallet } from "@solana/wallet-adapter-react";
+import { useWallet } from "@solana/wallet-adapter-react";
 import { WalletMultiButton, WalletDisconnectButton } from "@solana/wallet-adapter-react-ui";
-import { useCallback, useState } from "react";
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { WalletIcon, CheckIcon, Copy } from "lucide-react";
 import {
@@ -56,7 +56,7 @@ export default function WalletCard() {
                         </Button>
                     </div>
                 )}
-                <GetBalance publicKey={publicKey} connected={connected} />
+                <GetBalance />
                 <div className="space-y-4">
                     <div>
                         <label htmlFor="airdrop-amount" className="block text-sm font-medium mb-1 text-purple-700">Airdrop Amount</label>

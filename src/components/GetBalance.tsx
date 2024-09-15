@@ -3,10 +3,12 @@ import { EyeIcon, EyeOffIcon } from "lucide-react";
 import { useCallback, useEffect, useState } from "react";
 import { toast } from 'sonner';
 import { Button } from "@/components/ui/button";
-import { LAMPORTS_PER_SOL, PublicKey } from "@solana/web3.js";
+import { LAMPORTS_PER_SOL } from "@solana/web3.js";
+import { balanceUpdateEvent } from "@/lib/events";
 
-export default function GetBalance({ publicKey, connected } : { publicKey: PublicKey | null, connected: boolean }) {
+export default function GetBalance() {
     const { connection } = useConnection();
+    const { publicKey, connected } = useWallet();
     const [balance, setBalance] = useState(0);
     const [showBalance, setShowBalance] = useState(false)
 
@@ -26,6 +28,15 @@ export default function GetBalance({ publicKey, connected } : { publicKey: Publi
 
     useEffect(() => {
         getBalance();
+
+        const handleBalanceUpdate = () => {
+            getBalance();
+        };
+
+        balanceUpdateEvent.addEventListener('balanceUpdate', handleBalanceUpdate);
+        return () => {
+            balanceUpdateEvent.removeEventListener('balanceUpdate', handleBalanceUpdate);
+        };
     }, [getBalance]);
 
     return (

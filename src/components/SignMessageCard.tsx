@@ -1,7 +1,9 @@
 import { useState } from "react";
-import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { CheckIcon, ClipboardIcon, Copy } from "lucide-react"
+import { Textarea } from "./ui/textarea";
+import { CheckIcon, Copy } from "lucide-react";
+import { useRecoilValue } from 'recoil';
+import { signatureMessageAtom } from '@/store/atoms';
 import {
     Card,
     CardContent,
@@ -10,17 +12,13 @@ import {
 } from "@/components/ui/card"
 
 export default function SignMessageCard() {
-    const [signedMessage, setSignedMessage] = useState('')
+    const signedMessage = useRecoilValue(signatureMessageAtom);
     const [copied, setCopied] = useState(false)
 
     const handleCopyMessage = () => {
         navigator.clipboard.writeText(signedMessage)
         setCopied(true)
         setTimeout(() => setCopied(false), 2000)
-    }
-
-    const handleSignMessage = () => {
-        setSignedMessage('Signed Message: Hello, Solana! Timestamp: ' + new Date().toISOString())
     }
 
     return (
@@ -30,7 +28,7 @@ export default function SignMessageCard() {
             </CardHeader>
             <CardContent>
                 <div className="space-y-4">
-                    <Input
+                    <Textarea
                         value={signedMessage}
                         readOnly
                         className="bg-white/50 border-purple-300 h-24 text-purple-700"
@@ -38,7 +36,7 @@ export default function SignMessageCard() {
                     />
                     <Button
                         onClick={handleCopyMessage}
-                        className="w-full bg-purple-500 hover:bg-purple-600 text-white"
+                        className="w-full bg-purple-700 hover:bg-purple-800 text-white"
                         disabled={!signedMessage}
                     >
                         {copied ? (

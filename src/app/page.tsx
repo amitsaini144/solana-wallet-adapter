@@ -1,9 +1,7 @@
 "use client";
 
-import { useWallet } from "@solana/wallet-adapter-react";
 import { useEffect, useState } from "react";
 import { Spinner } from "@nextui-org/react";
-import { Toaster } from 'sonner';
 import WalletCard from "@/components/WalletCard";
 import SendTokensCard from "@/components/SendTokensCard";
 import SignMessageCard from "@/components/SignMessageCard";
@@ -16,7 +14,9 @@ export default function Home() {
   }, []);
 
   if (!isClient) {
-    return <div className="flex items-center justify-center min-h-screen"><Spinner color="secondary" /></div>;
+    return <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-purple-100 to-blue-100">
+      <Spinner color="primary" size="lg" />
+    </div>;
   }
 
   return (
@@ -30,7 +30,6 @@ export default function Home() {
           <SignMessageCard />
         </div>
       </div>
-      <Toaster richColors />
     </main>
   );
 }

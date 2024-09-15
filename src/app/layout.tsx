@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import AppWalletProvider from "@/components/AppWalletProvider";
 import { NextUIProvider } from "@nextui-org/react";
+import { Toaster } from "sonner";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,11 +20,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <NextUIProvider>
-          <AppWalletProvider>
+        <AppWalletProvider>
+          <NextUIProvider>
             {children}
-          </AppWalletProvider>
-        </NextUIProvider>
+          </NextUIProvider>
+          <Toaster richColors />
+        </AppWalletProvider>
       </body>
     </html>
   );

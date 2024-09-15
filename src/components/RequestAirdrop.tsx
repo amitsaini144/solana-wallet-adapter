@@ -5,10 +5,11 @@ import { toast } from "sonner";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { CoinsIcon } from "lucide-react";
+import { emitBalanceUpdate } from "@/lib/events";
 
 export default function RequestAirdrop() {
     const [amount, setAmount] = useState<number | null>(null);
-    const { publicKey } = useWallet();
+    const { publicKey, connected } = useWallet();
     const { connection } = useConnection();
 
     const getAirdropOnClick = useCallback(async () => {
@@ -18,6 +19,7 @@ export default function RequestAirdrop() {
         const airdropPromise = async () => {
             try {
                 await connection.requestAirdrop(publicKey, amount * LAMPORTS_PER_SOL);
+                setTimeout(emitBalanceUpdate, 3000);
                 return "Airdrop confirmed!";
             } catch (err) {
                 toast.error("Airdrop failed!");
@@ -39,12 +41,12 @@ export default function RequestAirdrop() {
                 className="bg-white/50 border-purple-300 appearance-none [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
                 onChange={(e) => {
                     const value = Number(e.target.value);
-                    if (value > 0 && value <= 3) setAmount(value);
+                    if (value > 0 && value <= 5) setAmount(value);
                     else setAmount(null);
                 }} />
             <Button
                 onClick={getAirdropOnClick}
-                disabled={!amount}
+                disabled={!amount || !connected}
                 className="bg-purple-700 hover:bg-purple-800 text-white">
                 <CoinsIcon className="mr-2 h-4 w-4" /> Airdrop
             </Button>
