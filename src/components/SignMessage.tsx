@@ -44,7 +44,7 @@ export default function SignMessage() {
             <Button
                 onClick={handleSignMessage}
                 disabled={!message || !connected}
-                className="bg-purple-700 hover:bg-purple-800 text-white">
+                className="bg-[#9945FF] hover:bg-purple-700 text-white">
                 <SignatureIcon className="mr-2 h-4 w-4" /> Sign
             </Button>
         </div>

@@ -26,7 +26,7 @@ export default function WalletCard() {
     return (
         <Card className="border shadow-lg">
             <CardHeader>
-                <CardTitle className="flex justify-between items-center text-purple-700">
+                <CardTitle className="flex justify-between items-center text-[#9945FF]">
                     <span className="text-2xl">Wallet</span>
                     {connected ? (
                         <WalletDisconnectButton />
@@ -46,7 +46,7 @@ export default function WalletCard() {
                         <Button
                             size="sm"
                             onClick={handleCopyPublicKey}
-                            className="bg-purple-500 hover:bg-purple-600 text-white"
+                            className="bg-[#9945FF] hover:bg-purple-600 text-white"
                         >
                             {publicKeyCopied ? (
                                 <CheckIcon className="h-4 w-4" />
@@ -59,11 +59,11 @@ export default function WalletCard() {
                 <GetBalance />
                 <div className="space-y-4">
                     <div>
-                        <label htmlFor="airdrop-amount" className="block text-sm font-medium mb-1 text-purple-700">Airdrop Amount</label>
+                        <label htmlFor="airdrop-amount" className="block text-sm font-medium mb-1 text-[#9945FF]">Airdrop Amount</label>
                         <RequestAirdrop />
                     </div>
                     <div>
-                        <label htmlFor="sign-message" className="block text-sm font-medium mb-1 text-purple-700">Sign Message</label>
+                        <label htmlFor="sign-message" className="block text-sm font-medium mb-1 text-[#9945FF]">Sign Message</label>
                         <SignMessage />
                     </div>
                 </div>

@@ -24,7 +24,7 @@ export default function SignMessageCard() {
     return (
         <Card className="md:col-span-2 border shadow-lg">
             <CardHeader>
-                <CardTitle className="text-purple-700 text-2xl">Signed Message</CardTitle>
+                <CardTitle className="text-[#9945FF] text-2xl">Signed Message</CardTitle>
             </CardHeader>
             <CardContent>
                 <div className="space-y-4">
@@ -36,7 +36,7 @@ export default function SignMessageCard() {
                     />
                     <Button
                         onClick={handleCopyMessage}
-                        className="w-full bg-purple-700 hover:bg-purple-800 text-white"
+                        className="w-full bg-[#9945FF] hover:bg-purple-700 text-white"
                         disabled={!signedMessage}
                     >
                         {copied ? (

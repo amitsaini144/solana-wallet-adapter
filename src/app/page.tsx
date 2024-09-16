@@ -26,7 +26,7 @@ export default function Home() {
   return (
     <main className="min-h-screen">
       <div className="pt-5 px-3 flex justify-between">
-        <h1 className="text-3xl font-bold text-center mb-5 text-purple-700">Wallet Adapter</h1>
+        <h1 className="text-3xl font-bold text-center mb-5 text-[#9945FF]">Wallet Adapter</h1>
         <div className="flex justify-center gap-1">
           <Link href={'https://github.com/amitsaini144/wallet-adapter'}
             target="_blank"

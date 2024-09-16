@@ -38,7 +38,7 @@ export default function RequestAirdrop() {
                 min={0}
                 id="airdrop-amount"
                 placeholder="SOL amount"
-                className=" border-purple-300 appearance-none [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+                className=" border-purple-300 appearance-none [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none text-[#9945FF]"
                 onChange={(e) => {
                     const value = Number(e.target.value);
                     if (value > 0 && value <= 5) setAmount(value);
@@ -47,7 +47,7 @@ export default function RequestAirdrop() {
             <Button
                 onClick={getAirdropOnClick}
                 disabled={!amount || !connected}
-                className="bg-purple-700 hover:bg-purple-800 text-white">
+                className="bg-[#9945FF] hover:bg-purple-700 text-white">
                 <CoinsIcon className="mr-2 h-4 w-4" /> Airdrop
             </Button>
         </div>
