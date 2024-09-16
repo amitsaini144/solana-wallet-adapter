@@ -17,6 +17,7 @@ export default function SignMessage() {
     async function handleSignMessage() {
         if (!publicKey) throw new Error('Wallet not connected!');
         if (!signMessage) throw new Error('Wallet does not support message signing!');
+        
         try {
             const encodedMessage = new TextEncoder().encode(message);
             const signature = await signMessage(encodedMessage);
