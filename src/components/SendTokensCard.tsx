@@ -65,7 +65,7 @@ export default function SendTokensCard() {
                             className="bg-white/50 border-purple-300 appearance-none [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
                             onChange={(e) => {
                                 const value = Number(e.target.value);
-                                if (value > 0 && value <= 5) setAmount(value);
+                                if (value > 0) setAmount(value);
                                 else setAmount(null);
                             }}
                         />
