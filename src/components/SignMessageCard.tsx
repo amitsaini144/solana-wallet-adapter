@@ -22,7 +22,7 @@ export default function SignMessageCard() {
     }
 
     return (
-        <Card className="md:col-span-2 border-none shadow-lg">
+        <Card className="md:col-span-2 border shadow-lg">
             <CardHeader>
                 <CardTitle className="text-purple-700 text-2xl">Signed Message</CardTitle>
             </CardHeader>
@@ -31,7 +31,7 @@ export default function SignMessageCard() {
                     <Textarea
                         value={signedMessage}
                         readOnly
-                        className="bg-white/50 border-purple-300 h-24 text-purple-700"
+                        className="border-purple-300 h-24"
                         placeholder="Your signed message will appear here"
                     />
                     <Button

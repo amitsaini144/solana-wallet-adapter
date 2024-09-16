@@ -38,7 +38,7 @@ export default function RequestAirdrop() {
                 min={0}
                 id="airdrop-amount"
                 placeholder="SOL amount"
-                className="bg-white/50 border-purple-300 appearance-none [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+                className=" border-purple-300 appearance-none [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
                 onChange={(e) => {
                     const value = Number(e.target.value);
                     if (value > 0 && value <= 5) setAmount(value);

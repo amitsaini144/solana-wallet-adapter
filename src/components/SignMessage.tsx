@@ -39,7 +39,7 @@ export default function SignMessage() {
                 id="message"
                 placeholder="Enter message"
                 onChange={(e) => setMessage(e.target.value)}
-                className="bg-white/50 border-purple-300"
+                className="border-purple-300"
             />
             <Button
                 onClick={handleSignMessage}

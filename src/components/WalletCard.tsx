@@ -24,7 +24,7 @@ export default function WalletCard() {
     }
 
     return (
-        <Card className="border-none shadow-lg">
+        <Card className="border shadow-lg">
             <CardHeader>
                 <CardTitle className="flex justify-between items-center text-purple-700">
                     <span className="text-2xl">Wallet</span>
@@ -39,8 +39,8 @@ export default function WalletCard() {
             </CardHeader>
             <CardContent>
                 {connected && (
-                    <div className="mb-4 p-2 bg-white/50 rounded-md flex items-center justify-between">
-                        <span className="text-sm font-medium text-purple-700 truncate mr-2">
+                    <div className="mb-4 p-2 border border-purple-300 rounded-md flex items-center justify-between">
+                        <span className="text-sm font-medium truncate mr-2">
                             {publicKey?.toString()}
                         </span>
                         <Button

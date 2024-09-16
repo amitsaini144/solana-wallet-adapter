@@ -44,7 +44,7 @@ export default function GetBalance() {
             <span className="text-lg font-semibold text-purple-700">Balance:</span>
             <div className="flex items-center">
                 {showBalance ? (
-                    <span className="mr-2 text-purple-700">{connected ? balance.toFixed(9) : 0} SOL</span>
+                    <span className="mr-2 ">{connected ? balance.toFixed(9) : 0} SOL</span>
                 ) : (
                     <span className="mr-2 text-purple-700">••••••</span>
                 )}

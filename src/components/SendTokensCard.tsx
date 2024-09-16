@@ -39,7 +39,7 @@ export default function SendTokensCard() {
     }
 
     return (
-        <Card className="border-none shadow-lg">
+        <Card className="border shadow-lg">
             <CardHeader>
                 <CardTitle className="text-purple-700 text-2xl">Send Tokens</CardTitle>
             </CardHeader>
@@ -51,7 +51,7 @@ export default function SendTokensCard() {
                             id="receiver-address"
                             type="text"
                             placeholder="Solana address"
-                            className="bg-white/50 border-purple-300"
+                            className="border-purple-300"
                             onChange={(e) => setTo(e.target.value)}
                         />
                     </div>
@@ -62,7 +62,7 @@ export default function SendTokensCard() {
                             type="number"
                             min={0}
                             placeholder="SOL amount"
-                            className="bg-white/50 border-purple-300 appearance-none [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+                            className="border-purple-300 appearance-none [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
                             onChange={(e) => {
                                 const value = Number(e.target.value);
                                 if (value > 0) setAmount(value);
