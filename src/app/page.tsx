@@ -14,13 +14,13 @@ export default function Home() {
   }, []);
 
   if (!isClient) {
-    return <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-purple-100 to-blue-100">
+    return <div className="flex items-center justify-center min-h-screen">
       <Spinner color="primary" size="lg" />
     </div>;
   }
 
   return (
-    <main className="min-h-screen bg-gradient-to-br from-purple-100 to-blue-100 p-4 sm:p-6 lg:p-8">
+    <main className="min-h-screen p-4 sm:p-6 lg:p-8 bg-slate-100">
       <div className="max-w-4xl mx-auto">
         <h1 className="text-4xl font-bold text-center mb-8 text-purple-600">Solana Wallet Adapter</h1>
 

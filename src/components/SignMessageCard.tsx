@@ -22,7 +22,7 @@ export default function SignMessageCard() {
     }
 
     return (
-        <Card className="md:col-span-2 bg-gradient-to-br from-yellow-200 to-green-200 border-none shadow-lg">
+        <Card className="md:col-span-2 border-none shadow-lg">
             <CardHeader>
                 <CardTitle className="text-purple-700 text-2xl">Signed Message</CardTitle>
             </CardHeader>

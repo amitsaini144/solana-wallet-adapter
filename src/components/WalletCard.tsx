@@ -24,7 +24,7 @@ export default function WalletCard() {
     }
 
     return (
-        <Card className="bg-gradient-to-br from-pink-200 to-orange-200 border-none shadow-lg">
+        <Card className="border-none shadow-lg">
             <CardHeader>
                 <CardTitle className="flex justify-between items-center text-purple-700">
                     <span className="text-2xl">Wallet</span>

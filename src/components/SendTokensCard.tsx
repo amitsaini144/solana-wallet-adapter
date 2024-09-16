@@ -39,7 +39,7 @@ export default function SendTokensCard() {
     }
 
     return (
-        <Card className="bg-gradient-to-br from-blue-200 to-green-200 border-none shadow-lg">
+        <Card className="border-none shadow-lg">
             <CardHeader>
                 <CardTitle className="text-purple-700 text-2xl">Send Tokens</CardTitle>
             </CardHeader>
@@ -73,7 +73,7 @@ export default function SendTokensCard() {
                     <Button
                         onClick={sendTokens}
                         disabled={!amount || !to || !connected}
-                        className="w-full bg-[#14F195] hover:bg-[#14F195]/90 text-purple-700 font-semibold ">
+                        className="w-full bg-purple-700 hover:bg-purple-800 text-white font-semibold ">
                         <SendIcon className="mr-2 h-4 w-4" /> Send Tokens
                     </Button>
                 </div>
