@@ -20,7 +20,7 @@ export default function Home() {
   }
 
   return (
-    <main className="min-h-screen p-4 sm:p-6 lg:p-8 bg-slate-100">
+    <main className="min-h-screen p-4 sm:p-6 lg:p-8 bg-slate-200">
       <div className="max-w-4xl mx-auto">
         <h1 className="text-4xl font-bold text-center mb-8 text-purple-600">Solana Wallet Adapter</h1>
 
