@@ -41,28 +41,27 @@ export default function SendTokensCard() {
     return (
         <Card className="border shadow-lg">
             <CardHeader>
-                <CardTitle className="text-[#9945FF] text-2xl">Send Tokens</CardTitle>
+                <CardTitle className="text-2xl">Send Tokens</CardTitle>
             </CardHeader>
             <CardContent>
                 <div className="space-y-4">
                     <div>
-                        <label htmlFor="receiver-address" className="block text-sm font-medium mb-1 text-purple-700">Receiver Address</label>
+                        <label htmlFor="receiver-address" className="block text-sm font-medium mb-1">Receiver Address</label>
                         <Input
                             id="receiver-address"
                             type="text"
                             placeholder="Solana address"
-                            className="border-purple-300"
                             onChange={(e) => setTo(e.target.value)}
                         />
                     </div>
                     <div>
-                        <label htmlFor="send-amount" className="block text-sm font-medium mb-1 text-purple-700">Amount</label>
+                        <label htmlFor="send-amount" className="block text-sm font-medium mb-1">Amount</label>
                         <Input
                             id="send-amount"
                             type="number"
                             min={0}
                             placeholder="SOL amount"
-                            className="border-purple-300 appearance-none [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+                            className="appearance-none [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
                             onChange={(e) => {
                                 const value = Number(e.target.value);
                                 if (value > 0) setAmount(value);
@@ -73,7 +72,8 @@ export default function SendTokensCard() {
                     <Button
                         onClick={sendTokens}
                         disabled={!amount || !to || !connected}
-                        className="w-full bg-[#9945FF] hover:bg-purple-700 text-white font-semibold ">
+                        className="w-full font-semibold"
+                    >
                         <SendIcon className="mr-2 h-4 w-4" /> Send Tokens
                     </Button>
                 </div>

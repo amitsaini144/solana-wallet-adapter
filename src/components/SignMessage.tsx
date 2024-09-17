@@ -17,7 +17,7 @@ export default function SignMessage() {
     async function handleSignMessage() {
         if (!publicKey) throw new Error('Wallet not connected!');
         if (!signMessage) throw new Error('Wallet does not support message signing!');
-        
+
         try {
             const encodedMessage = new TextEncoder().encode(message);
             const signature = await signMessage(encodedMessage);
@@ -39,12 +39,11 @@ export default function SignMessage() {
                 id="message"
                 placeholder="Enter message"
                 onChange={(e) => setMessage(e.target.value)}
-                className="border-purple-300"
             />
             <Button
                 onClick={handleSignMessage}
                 disabled={!message || !connected}
-                className="bg-[#9945FF] hover:bg-purple-700 text-white">
+            >
                 <SignatureIcon className="mr-2 h-4 w-4" /> Sign
             </Button>
         </div>

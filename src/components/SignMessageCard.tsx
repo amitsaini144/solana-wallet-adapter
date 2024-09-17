@@ -24,19 +24,19 @@ export default function SignMessageCard() {
     return (
         <Card className="md:col-span-2 border shadow-lg">
             <CardHeader>
-                <CardTitle className="text-[#9945FF] text-2xl">Signed Message</CardTitle>
+                <CardTitle className="text-2xl">Signed Message</CardTitle>
             </CardHeader>
             <CardContent>
                 <div className="space-y-4">
                     <Textarea
                         value={signedMessage}
                         readOnly
-                        className="border-purple-300 h-24"
+                        className="h-24"
                         placeholder="Your signed message will appear here"
                     />
                     <Button
                         onClick={handleCopyMessage}
-                        className="w-full bg-[#9945FF] hover:bg-purple-700 text-white"
+                        className="w-full"
                         disabled={!signedMessage}
                     >
                         {copied ? (

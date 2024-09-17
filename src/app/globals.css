@@ -65,5 +65,5 @@
   }
 }
 button.wallet-adapter-button-trigger {
-  @apply bg-[#9945FF] rounded-lg p-3 h-10 font-medium  !important;
+  @apply bg-black dark:bg-white dark:text-black rounded-lg p-3 h-10 font-medium  !important;
 }
