@@ -9,6 +9,7 @@ import { ThemeToggler } from "@/components/ThemeToggler";
 import Link from "next/link";
 import { Icons } from "@/components/icons";
 import { buttonVariants } from "@/components/ui/button";
+import { motion } from "framer-motion";
 
 export default function Home() {
   const [isClient, setIsClient] = useState(false);
@@ -25,8 +26,12 @@ export default function Home() {
 
   return (
     <main className="min-h-screen">
-      <div className="pt-5 px-3 flex justify-between">
-        <h1 className="text-3xl font-bold text-center mb-5">Wallet Adapter</h1>
+      <motion.div className="pt-5 px-3 flex justify-between"
+        initial={{ opacity: 0, y: -50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.4 }}
+      >
+        <h1 className="text-3xl font-bold text-center mb-5"><span className="sm:hidden">SOL</span><span className="hidden sm:inline">Solana</span> Wallet Adapter</h1>
         <div className="flex justify-center gap-1">
           <Link href={'https://github.com/amitsaini144/wallet-adapter'}
             target="_blank"
@@ -40,15 +45,24 @@ export default function Home() {
           </Link>
           <ThemeToggler />
         </div>
+      </motion.div>
 
-      </div>
-
-      <div className="max-w-4xl mx-auto p-4 sm:p-5 lg:p-6 lg:px-0 ">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <WalletCard />
-          <SendTokensCard />
-          <SignMessageCard />
-        </div>
+      <div className="max-w-4xl mx-auto p-4 sm:p-5 lg:p-6 lg:px-0">
+        <motion.div className="grid grid-cols-1 md:grid-cols-2 gap-6"
+          initial={{ opacity: 0, y: 100 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4 }}
+        >
+          <motion.div whileHover={{ scale: 1.01 }}>
+            <WalletCard />
+          </motion.div>
+          <motion.div whileHover={{ scale: 1.01 }}>
+            <SendTokensCard />
+          </motion.div>
+          <motion.div whileHover={{ scale: 1.01 }} className="md:col-span-2">
+            <SignMessageCard />
+          </motion.div>
+        </motion.div>
       </div>
     </main>
   );

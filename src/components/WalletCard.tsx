@@ -58,7 +58,7 @@ export default function WalletCard() {
                 <GetBalance />
                 <div className="space-y-4">
                     <div>
-                        <label htmlFor="airdrop-amount" className="block text-sm font-medium mb-1">Airdrop Amount</label>
+                        <label htmlFor="airdrop-amount" className="block text-sm font-medium mb-1">Airdrop Amount (<span className="text-xs"> max. 5 SOL </span>)</label>
                         <RequestAirdrop />
                     </div>
                     <div>

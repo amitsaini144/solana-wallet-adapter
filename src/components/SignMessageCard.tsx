@@ -22,7 +22,7 @@ export default function SignMessageCard() {
     }
 
     return (
-        <Card className="md:col-span-2 border shadow-lg">
+        <Card className=" border shadow-lg">
             <CardHeader>
                 <CardTitle className="text-2xl">Signed Message</CardTitle>
             </CardHeader>
