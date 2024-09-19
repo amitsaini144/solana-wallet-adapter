@@ -26,7 +26,7 @@ export default function Home() {
 
   return (
     <main className="min-h-screen">
-      <motion.div className="pt-5 px-3 flex justify-between"
+      <motion.div className="pt-5 px-3 flex justify-between lg:mx-16"
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.8 }}
