@@ -29,7 +29,7 @@ export default function Home() {
       <motion.div className="pt-5 px-3 flex justify-between"
         initial={{ y: -100 }}
         animate={{ y: 0 }}
-        transition={{ duration: 0.5 }}
+        transition={{ duration: 0.8 }}
       >
         <h1 className="text-3xl font-bold text-center mb-5"><span className="sm:hidden">SOL</span><span className="hidden sm:inline">Solana</span> Wallet Adapter</h1>
         <div className="flex justify-center gap-1">
@@ -49,9 +49,9 @@ export default function Home() {
 
       <div className="max-w-4xl mx-auto p-4 sm:p-5 lg:p-6 lg:px-0">
         <motion.div className="grid grid-cols-1 md:grid-cols-2 gap-6"
-          initial={{ y: 100 }}
-          animate={{ y: 0 }}
-          transition={{ duration: 0.5 }}
+          initial={{ y: 100, opacity: 0 }}
+          animate={{ y: 0, opacity:100 }}
+          transition={{ duration: 0.8 }}
         >
           <motion.div whileHover={{ scale: 1.01 }} whileTap={{ scale: 1.01 }}>
             <WalletCard />
