@@ -27,9 +27,9 @@ export default function Home() {
   return (
     <main className="min-h-screen">
       <motion.div className="pt-5 px-3 flex justify-between"
-        initial={{ opacity: 0, y: -50 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.4 }}
+        initial={{ y: -100 }}
+        animate={{ y: 0 }}
+        transition={{ duration: 0.5 }}
       >
         <h1 className="text-3xl font-bold text-center mb-5"><span className="sm:hidden">SOL</span><span className="hidden sm:inline">Solana</span> Wallet Adapter</h1>
         <div className="flex justify-center gap-1">
@@ -49,17 +49,17 @@ export default function Home() {
 
       <div className="max-w-4xl mx-auto p-4 sm:p-5 lg:p-6 lg:px-0">
         <motion.div className="grid grid-cols-1 md:grid-cols-2 gap-6"
-          initial={{ opacity: 0, y: 100 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4 }}
+          initial={{ y: 100 }}
+          animate={{ y: 0 }}
+          transition={{ duration: 0.5 }}
         >
-          <motion.div whileHover={{ scale: 1.01 }}>
+          <motion.div whileHover={{ scale: 1.01 }} whileTap={{ scale: 1.01 }}>
             <WalletCard />
           </motion.div>
-          <motion.div whileHover={{ scale: 1.01 }}>
+          <motion.div whileHover={{ scale: 1.01 }} whileTap={{ scale: 1.01 }}>
             <SendTokensCard />
           </motion.div>
-          <motion.div whileHover={{ scale: 1.01 }} className="md:col-span-2">
+          <motion.div whileHover={{ scale: 1.01 }} whileTap={{ scale: 1.01 }} className="md:col-span-2">
             <SignMessageCard />
           </motion.div>
         </motion.div>
