@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import AppWalletProvider from "@/components/AppWalletProvider";
-import { NextUIProvider } from "@nextui-org/react";
 import { Toaster } from "sonner";
 import { ThemeProvider } from "@/components/theme-provider";
 
@@ -19,7 +18,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body className={inter.className}>
         <ThemeProvider
           attribute="class"
@@ -28,9 +27,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <AppWalletProvider>
-            <NextUIProvider>
               {children}
-            </NextUIProvider>
             <Toaster richColors />
           </AppWalletProvider>
         </ ThemeProvider>

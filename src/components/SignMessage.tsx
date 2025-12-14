@@ -1,3 +1,5 @@
+"use client";
+
 import { ed25519 } from '@noble/curves/ed25519';
 import { useWallet } from '@solana/wallet-adapter-react';
 import bs58 from 'bs58';
@@ -6,13 +8,12 @@ import { toast } from 'sonner';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { SignatureIcon } from "lucide-react";
-import { useSetRecoilState } from 'recoil';
-import { signatureMessageAtom } from '@/store/atoms';
+import { useSignature } from '@/store/signatureContext';
 
 export default function SignMessage() {
     const { publicKey, signMessage, connected } = useWallet();
     const [message, setMessage] = useState('');
-    const setSignatureMessage = useSetRecoilState(signatureMessageAtom);
+    const { setSignedMessage } = useSignature();
 
     async function handleSignMessage() {
         if (!publicKey) throw new Error('Wallet not connected!');
@@ -24,7 +25,7 @@ export default function SignMessage() {
 
             const isValid = ed25519.verify(signature, encodedMessage, publicKey.toBytes());
             if (!isValid) throw new Error('Message signature invalid!');
-            setSignatureMessage(bs58.encode(signature));
+            setSignedMessage(bs58.encode(signature));
             toast.success("Message signed!");
         } catch (err) {
             toast.error("Signing failed!");

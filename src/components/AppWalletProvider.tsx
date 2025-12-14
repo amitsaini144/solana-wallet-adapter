@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useMemo } from "react";
-import { RecoilRoot } from 'recoil';
+import { NextUIProvider } from "@nextui-org/react";
 import {
   ConnectionProvider,
   WalletProvider,
@@ -9,7 +9,8 @@ import {
 import { WalletAdapterNetwork } from "@solana/wallet-adapter-base";
 import { WalletModalProvider } from "@solana/wallet-adapter-react-ui";
 import { clusterApiUrl } from "@solana/web3.js";
-require("@solana/wallet-adapter-react-ui/styles.css");
+import "@solana/wallet-adapter-react-ui/styles.css";
+import { SignatureProvider } from "@/store/signatureContext";
 
 export default function AppWalletProvider({
   children,
@@ -23,9 +24,11 @@ export default function AppWalletProvider({
     <ConnectionProvider endpoint={endpoint} >
       <WalletProvider wallets={[]} autoConnect>
         <WalletModalProvider>
-          <RecoilRoot>
-            {children}
-          </RecoilRoot>
+          <SignatureProvider>
+            <NextUIProvider>
+              {children}
+            </NextUIProvider>
+          </SignatureProvider>
         </WalletModalProvider>
       </WalletProvider>
     </ConnectionProvider>

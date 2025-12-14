@@ -1,6 +1,6 @@
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { SendIcon } from "lucide-react";
+import { SendIcon, Loader2 } from "lucide-react";
 import { LAMPORTS_PER_SOL, PublicKey, SystemProgram, Transaction } from "@solana/web3.js";
 import { toast } from "sonner";
 import {
@@ -17,6 +17,7 @@ export default function SendTokensCard() {
     const { connected, publicKey, sendTransaction } = useWallet();
     const { connection } = useConnection();
     const [amount, setAmount] = useState<number | null>(null);
+    const [sendLoading, setSendLoading] = useState(false);
     const [to, setTo] = useState('');
 
     async function sendTokens() {
@@ -30,11 +31,31 @@ export default function SendTokensCard() {
                 lamports: amount * LAMPORTS_PER_SOL,
             }));
 
+            setSendLoading(true);
+
+
             await sendTransaction(transaction, connection);
             setTimeout(emitBalanceUpdate, 3000);
             toast.success("Sent " + amount + " SOL");
         } catch (err: any) {
-            toast.error(err.message);
+            if (err?.code === 4001 || err?.message?.includes("User rejected")) {
+                toast.error("You rejected the transaction.");
+                return;
+            }
+
+            if (err?.message?.includes("insufficient funds")) {
+                toast.error("Not enough SOL to send.");
+                return;
+            }
+
+            if (err?.message?.includes("blockhash")) {
+                toast.error("Transaction expired. Try again.");
+                return;
+            }
+
+            toast.error(err.message || "Transaction failed");
+        } finally {
+            setSendLoading(false);
         }
     }
 
@@ -72,9 +93,10 @@ export default function SendTokensCard() {
                     <Button
                         onClick={sendTokens}
                         disabled={!amount || !to || !connected}
-                        className="w-full font-semibold"
+                        className="w-full font-semibold"    
                     >
-                        <SendIcon className="mr-2 h-4 w-4" /> Send Tokens
+                        {!sendLoading && <SendIcon className="mr-2 h-4 w-4" />}
+                        {sendLoading ? "Processing..." : "Send Tokens"}
                     </Button>
                 </div>
             </CardContent>

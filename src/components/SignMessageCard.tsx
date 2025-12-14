@@ -1,9 +1,10 @@
+"use client";
+
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "./ui/textarea";
 import { CheckIcon, Copy } from "lucide-react";
-import { useRecoilValue } from 'recoil';
-import { signatureMessageAtom } from '@/store/atoms';
+import { useSignature } from '@/store/signatureContext';
 import {
     Card,
     CardContent,
@@ -12,7 +13,8 @@ import {
 } from "@/components/ui/card"
 
 export default function SignMessageCard() {
-    const signedMessage = useRecoilValue(signatureMessageAtom);
+
+    const { signedMessage } = useSignature();
     const [copied, setCopied] = useState(false)
 
     const handleCopyMessage = () => {
